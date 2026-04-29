@@ -4,7 +4,7 @@
 
 ## 🛠️ Запуск локально
 ```bash
-docker compose up -d
+
 ОПИСАНИЕ ДЛЯ ПОРТФОЛИО
 DevOps Final Project
 Автор: Borisov Kirill
