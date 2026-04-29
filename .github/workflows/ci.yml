@@ -1,0 +1,19 @@
+name: Build & Test
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker Image
+        run: docker build -t my-final-app .
+      - name: Run Container Test
+        run: |
+          docker run -d --name test-app -p 8000:8000 my-final-app
+          sleep 3
+          curl -f http://localhost:8000 || exit 1
+          docker stop test-app && docker rm test-app
+      - name: Success
+        run: echo "✅ Pipeline passed!"
